@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my feelings❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* SCREEN 1: THE ENVELOPE OPENING */
+        #envelope-screen {
+            text-align: center;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instruction-text {
+            color: #fb6f92;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: pulseText 2s infinite;
+        }
+
+        .envelope {
+            width: 160px;
+            height: 160px;
+            background-color: #ff8fab;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(251, 111, 146, 0.4);
+            animation: float 3s ease-in-out infinite;
+            transition: transform 0.2s ease;
+        }
+
+        .envelope:active {
+            transform: scale(0.9); /* Lulubog nang kaunti sa screen ng CP kapag pinindot */
+        }
+
+        /* Lumulutang at Tumitibok na Puso */
+        .heart {
+            background-color: #ffffff;
+            display: inline-block;
+            height: 50px;
+            position: relative;
+            transform: rotate(-45deg);
+            width: 50px;
+            animation: beat 1.2s infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            background-color: #ffffff;
+            border-radius: 50%;
+            height: 50px;
+            position: absolute;
+            width: 50px;
+        }
+
+        .heart:before { top: -25px; left: 0; }
+        .heart:after { left: 25px; top: 0; }
+
+        /* SCREEN 2: THE ROMANTIC LETTER */
+        #letter-screen {
+            display: none; /* Nakatago sa simula */
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 340px;
+            padding: 30px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #ffb3c6;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .letter-title {
+            color: #ff4d6d;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .letter-body {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            white-space: pre-line;
+        }
+
+        .claim-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff8fab);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .claim-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ANIMATIONS */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.15); }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SCREEN 1: ANG ENVELOPE OPENING -->
+    <div id="envelope-screen">
+        <p class="instruction-text">Click Mo Nalang...💕</p>
+        <div class="envelope" onclick="openLetter()">
+            <div class="heart"></div>
+        </div>
+    </div>
+
+    <!-- SCREEN 2: ANG TUNAY NA SULAT -->
+    <div id="letter-screen">
+        <h2 class="letter-title">Hi Dawn!🫶🏻
+</h2>
+        <p class="letter-body">first and foremost i would like to say good evening, i know this may sound cringy but, those days na first time taka nakita, those were the days that i realize i was captivated in shortness inlababo, it's just ang aura mo while naga drums is so mesmerizing and ang smile mo ang mata mo it makes me melt, so before this night ends i would like to confess my feelings and sabihin na meron akong gusto sayo, I don't expect anything in return and I don't expect you to like me back, I just want you to know this and that's why I'm willing to take the risk or i'd rather lose the chance, and if in God's will gusto kitang ligawan, maybe not now or sooner or later but i will wait that's all!
+        </p>
+        
+        <button class="claim-btn" onclick="claimSurprise()">I-claim ang Surprise 🎁</button>
+    </div>
+
+    <script>
+        function openLetter() {
+            // Diretso lipat na agad ng screen nang walang haharang na audio error
+            document.getElementById('envelope-screen').style.display = 'none';
+            document.getElementById('letter-screen').style.display = 'block';
+        }
+
+        function claimSurprise() {
+            alert("No Pressure Just Tell Me What You Feel ❤️");
+        }
+    </script>
+
+</body>
+</html>
